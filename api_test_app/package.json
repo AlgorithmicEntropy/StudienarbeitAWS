@@ -1,0 +1,18 @@
+{
+  "name": "perf_test",
+  "version": "1.0.0",
+  "description": "AWS Lambda performance tests",
+  "main": "collect_data.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "csv": "^5.3.2",
+    "dotenv": "^8.2.0",
+    "fs-extra": "^9.0.1",
+    "newman": "^5.2.1"
+  }
+}
