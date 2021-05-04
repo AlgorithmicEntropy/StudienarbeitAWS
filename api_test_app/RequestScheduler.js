@@ -1,3 +1,4 @@
+const { count } = require('console')
 var fs = require('fs')
 const { AWSRequest } = require('./AWSRequest')
 const { STATUS_CODE, REQUEST_TIME, GET, TIMESTAMP, PAYLOAD, FUNCTION_TYPE } = require('./const')
@@ -38,25 +39,34 @@ class RequestScheduler {
   }
 
   runTest (path) {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
       if (!this.instructions) {
         throw new Error('No timing instructions found')
       }
       const request = new AWSRequest(this.baseUrl, this.apiKey)
 
-      this.instructions.forEach(async (instruction) => {
-        const delay = instruction[0]
-        const count = instruction[1]
+      for (let i = 0; i < this.instructions.length; i++) {
+        const instruction = this.instructions[i]
+        const delay = parseInt(instruction[0])
+        const count = parseInt(instruction[1])
 
-        for (let i = 0; i < count; i++) {
+        let requestTime = 0
+
+        console.log(`Running ${count} requests with a delay of ${delay}`)
+
+        for (let j = 0; j < count; j++) {
           await request.callGetAPI(path)
             .then((result) => {
               this._loggResult(result)
+              requestTime = result[REQUEST_TIME]
             })
-          await sleep(delay)
+          const delayTime = delay - requestTime
+          if (delayTime > 0) {
+            await sleep(delayTime)
+          }
         }
         resolve()
-      })
+      }
     })
   }
 

@@ -29,8 +29,6 @@ if (!apiBasePath || !apiKey) {
 const scheduler = new RequestScheduler(TIMING_CONFIG_PATH, apiBasePath, apiKey)
 scheduler.initLogger('./logs/', getHumanDate(), COLUMNS)
 scheduler.runTest(COMPUTE_NODE_URL)
-  .then(scheduler.runTest(COMPUTE_PYTHON_URL))
-  .then(scheduler.runTest(FIB_NODE_URL))
-  .then(scheduler.runTest(FIB_PYTHON_URL))
-
-sleep(5000)
+scheduler.runTest(FIB_NODE_URL)
+scheduler.runTest(COMPUTE_PYTHON_URL)
+scheduler.runTest(FIB_PYTHON_URL)
