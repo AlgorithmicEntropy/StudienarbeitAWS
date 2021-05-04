@@ -164,6 +164,8 @@ Dafür soll zuerst geklärt werden worum es sich bei serverlosen Funktionen hand
 Zur Analyse sollen vier Test-Funktionen implementiert werden und auf verschiedene Eigenschaften, wie z.B. Latenz untersucht werden. Besonders die Coldstart-Problematik von serverlosen Systemen soll hierbei näher erläutert werden.
 \\
 Zum testen der Funktionen wird eine selbst einwickelte NodeJS Anwendung verwendet, welche die Funktionen ansteuert und die Ergebnisse Protokolliert. Zur Auswertung der so gesammelten Daten wird eine Jupyter-Notebook entwickelt, welches die gängigen Data-Science Bibliotheken wie Pandas und Matplotlib verwendet.
+\\
+Der gesamte Source-Code aller implementierten Applikationen kann unter folgendem Link eingesehen werden: \url{https://github.com/SebastianWallat/StudienarbeitAWS}
 
 
 \bigskip
@@ -262,7 +264,7 @@ Der Testaufbau besteht aus 4 in AWS implementierten Lambda-Funktionen. Diese sin
 	\label{Lambda_Aufbau}
 \end{figure}
 
-Darstellung \ref{Lambda_Aufbau} zeigt eine Überblickskizze über die in der Cloud implementierten Funktionalitäten. Insgesamt wurden vier Lambda-Funktionen implementiert, hierbei wurden zwei verschiedene Programmiersprachen und zwei Arten von Workloads berücksichtigt. Als verwendete Sprachen werden Python und Java Script (NodeJS-Framework) verwendet. Bei den implementierten Workloads handelt es sich einmal um die iterative Berechnung von $\pi$ auf eine festgelegte Anzahl stellen, sowie um die rekursive Berechnung einer Zahl der Fibonacci folge. Der Sourcecode kann unter folgendem Link eingesehen werden: \url{https://github.com/SebastianWallat/StudienarbeitAWS}
+Darstellung \ref{Lambda_Aufbau} zeigt eine Überblickskizze über die in der Cloud implementierten Funktionalitäten. Insgesamt wurden vier Lambda-Funktionen implementiert, hierbei wurden zwei verschiedene Programmiersprachen und zwei Arten von Workloads berücksichtigt. Als verwendete Sprachen werden Python und Java Script (NodeJS-Framework) verwendet. Bei den implementierten Workloads handelt es sich einmal um die iterative Berechnung von $\pi$ auf eine festgelegte Anzahl stellen, sowie um die rekursive Berechnung einer Zahl der Fibonacci folge. Der Sourcecode kann unter folgendem Link eingesehen werden: \url{https://github.com/SebastianWallat/StudienarbeitAWS/tree/main/lambda_src}
 \\
 Des weiteren dokumentiert jede Lambda Funktion ihre Laufzeit und sendet diese, sowie das Ergebnis der Berechnung an den Aufrufer zurück.
 
@@ -290,11 +292,13 @@ Die nachfolgende Tabelle \ref{table:1} zeigt eine mögliche Request-Sequenz:
 
 Diese Tabelle kann folgendermaßen interpretiert werden:\\
 Führe zuerst 5 Aufrufe mit jeweils 1 Sekunde Pause aus, danach führe 10 Aufrufe mit jeweils 5 Sekunden Pause aus.
+\\
+Der Code der Testanwendung ist ebenfalls im Github (\url{https://github.com/SebastianWallat/StudienarbeitAWS/tree/main/api_test_app}) enthalten.
 
 \newpage
 \section{Auswertung}
 
-Zur Auswertung der gesammelten Daten wird ein Jupyter-Notebook (Python) verwendet, dieses visualisiert die Latenzzeiten unter Verwendung der üblichen Data-Science Frameworks (unter anderem Pandas, Matplotlib).
+Zur Auswertung der gesammelten Daten wird ein Jupyter-Notebook (Python) verwendet, dieses visualisiert die Latenzzeiten unter Verwendung der üblichen Data-Science Frameworks (unter anderem Pandas, Matplotlib). Das Notebook kann unter folgendem Link eingesehen werden: \url{https://github.com/SebastianWallat/StudienarbeitAWS/tree/main/result_processing}
 \\
 Um eine relativ gute Datenbasis zu erhalten wurden alle versuche mindestens drei Mal durchgeführt und ihre Ergebnisse gemittelt.
 
